@@ -1,11 +1,8 @@
 import React from "react"
-import Header from "../components/header"
+import HomeContainer from "./index"
 
 export default function Home() {
   return (
-  <>
-    <Header headerText="こんにちは" />
-    <div>Hello world!</div>
-  </>
+    <HomeContainer />
   )
 }
