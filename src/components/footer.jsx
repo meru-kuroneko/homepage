@@ -12,26 +12,13 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export default function Header() {
+export default function Footer() {
     const classes = useStyles();
-    const preventDefault = (event) => event.preventDefault();
   return (
     <>
       <Container fixed>
         <Typography className={classes.root}>
-            <Link href="#" onClick={preventDefault}>
-                ABOUT
-            </Link>
-        </Typography>
-        <Typography className={classes.root}>
-            <Link href="#" onClick={preventDefault}>
-                WORKS / ART / ENGINEER SKILL
-            </Link>
-        </Typography>
-        <Typography className={classes.root}>
-            <Link href="#" onClick={preventDefault}>
-                Contact
-            </Link>
+          @meru_lotte
         </Typography>
       </Container>
     </>
