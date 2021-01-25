@@ -1,8 +1,8 @@
 import React from "react"
-import HomeContainer from "./index"
+import App from "./index"
 
 export default function Home() {
   return (
-    <HomeContainer />
+    <App />
   )
 }
