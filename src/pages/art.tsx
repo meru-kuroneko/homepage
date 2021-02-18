@@ -32,11 +32,11 @@ const Art = ({data}) => {
         art work.
       </Typography>
       <GridList cellHeight={160} className={classes.gridList} cols={3}>
-        {data.allMicrocmsArt?.nodes.map( node =>
+        {data.allMicrocmsArt ? data.allMicrocmsArt.nodes.map( node =>
         <GridListTile key={node.id} cols={1}>
             <img src={node.thumbnail.url} alt={node.title} />
           </GridListTile>
-        )}
+        ) : ''}
       </GridList>
     </ContentsContiner>
   );
