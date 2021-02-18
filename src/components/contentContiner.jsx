@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ContentsContiner(props) {
-  const windowHeight = window.innerHeight;
+  const module = typeof window !== `undefined` ? window : null
+  const windowHeight = module.innerHeight;
   const classes = useStyles(windowHeight);
   return (
     <Container fixed className={classes.container} id={props.id}>

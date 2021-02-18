@@ -29,7 +29,8 @@ type Props = {
 }
 
 const Top: React.FC<Props> = ({id}) => {
-  const height = window.innerHeight;
+  const module = typeof window !== `undefined` ? window : null
+  const height = module.innerHeight;
   const classes = useStyles(height);
   return (
     // @ts-ignore
