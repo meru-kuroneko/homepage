@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   gridList: {
-    width: 600,
+    width: '90%',
     height: 350,
   },
 }));
@@ -24,21 +24,23 @@ type Props = {
   id: string
 }
 
-const Art: React.FC<Props> = ({id}) => {
+const Art = ({data}) => {
   const classes = useStyles();
   return (
-    <ContentsContiner id={id}>
+    <ContentsContiner id='art'>
       <Typography variant="h3" gutterBottom>
         art work.
       </Typography>
       <GridList cellHeight={160} className={classes.gridList} cols={3}>
-        {tileData.map((tile) => (
-        <GridListTile key={tile.img} cols={tile.cols || 1}>
-          <img src={tile.img} alt={tile.img} />
-        </GridListTile>
-  ))}
-</GridList>
+        {data.allMicrocmsArt.nodes.map( node =>
+        <GridListTile key={node.id} cols={1}>
+            <img src={node.thumbnail.url} alt={node.title} />
+          </GridListTile>
+        )}
+      </GridList>
     </ContentsContiner>
   );
 }
+
 export default Art;
+

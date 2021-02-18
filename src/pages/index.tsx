@@ -1,5 +1,6 @@
 
 import React from "react"
+import { graphql } from "gatsby"
 import { makeStyles } from '@material-ui/core/styles';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Fab from '@material-ui/core/Fab';
@@ -45,14 +46,14 @@ function ScrollTop(props) {
   );
 }
 
-const App = () => {
+const App = ({data}) => {
   const classes = useStyles();
   return (
       <>
         <Header/>
         <Top id="top" />
         <About id="about"/>
-        <Art id="art" />
+        <Art data={data} />
         <Skill id ="skill" />
         <Footer/>
         <ScrollTop classes={classes} >
@@ -62,4 +63,23 @@ const App = () => {
         </ScrollTop>
       </>
   )}
-  export default App;
+
+export const query = graphql`
+query {
+  allMicrocmsArt {
+    nodes {
+      id
+      title
+      createdAt
+      picture {
+        url
+      }
+      thumbnail {
+        url
+      }
+    }
+  }
+}
+`
+
+export default App;
