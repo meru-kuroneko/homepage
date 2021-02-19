@@ -16,26 +16,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-type Art = {
-  id: string,
-  title: string,
-  createdAt: string,
-  picture:  {
-    url: string
-  },
-  thumbnail: {
-    url: string
-  }
-}
-
-type MicrocmsArt = {
-  allMicrocmsArt: {nodes: Art[]}
-};
-
-type Props = {
-  data: MicrocmsArt
-}
-
 const Art = () => {
   const classes = useStyles();
   const data = useStaticQuery(
