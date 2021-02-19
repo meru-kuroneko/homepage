@@ -19,6 +19,10 @@ const useStyles = makeStyles((theme) => ({
     bottom: theme.spacing(3),
     right: theme.spacing(3),
   },
+  testimg: {
+    // height: '100px',
+    // width: '100px',
+  }
 }));
 
 function ScrollTop(props) {
@@ -54,6 +58,11 @@ const App = ({data}) => {
         <Top id="top" />
         <About id="about"/>
         <Art data={data} />
+        {data.allMicrocmsArt.nodes.map( node =>
+          <div className={classes.testimg} key={node.id}>
+            {node.id}
+          </div>
+        )}
         <Skill id ="skill" />
         <Footer/>
         <ScrollTop classes={classes} >

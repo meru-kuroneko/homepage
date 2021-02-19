@@ -15,15 +15,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// TODO: 仮データ
-const tileData = [
-  {img: 'icon.jpeg', cols: 1}, {img: 'icon.jpeg', cols: 1}, {img: 'icon.jpeg', cols: 1},
-  {img: 'icon.jpeg', cols: 1}, {img: 'icon.jpeg', cols: 1}, {img: 'icon.jpeg', cols: 1} ];
-
-type Props = {
-  id: string
-}
-
 const Art = ({data}) => {
   const classes = useStyles();
   return (
@@ -31,13 +22,7 @@ const Art = ({data}) => {
       <Typography variant="h3" gutterBottom>
         art work.
       </Typography>
-      <GridList cellHeight={160} className={classes.gridList} cols={3}>
-        {data.allMicrocmsArt ? data.allMicrocmsArt.nodes.map( node =>
-        <GridListTile key={node.id} cols={1}>
-            <img src={node.thumbnail.url} alt={node.title} />
-          </GridListTile>
-        ) : ''}
-      </GridList>
+
     </ContentsContiner>
   );
 }
