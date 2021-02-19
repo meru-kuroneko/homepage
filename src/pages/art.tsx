@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC }  from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import GridList from '@material-ui/core/GridList';
@@ -15,14 +15,40 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Art = ({data}) => {
+type Art = {
+  id: string,
+  title: string,
+  createdAt: string,
+  picture:  {
+    url: string
+  },
+  thumbnail: {
+    url: string
+  }
+}
+
+type MicrocmsArt = {
+  allMicrocmsArt: {nodes: Art[]}
+};
+
+type Props = {
+  data: MicrocmsArt
+}
+
+const Art: FC<Props>  = ({data}) => {
   const classes = useStyles();
   return (
     <ContentsContiner id='art'>
       <Typography variant="h3" gutterBottom>
         art work.
       </Typography>
-
+      <GridList cellHeight={160} className={classes.gridList} cols={3}>
+        {data.allMicrocmsArt.nodes.map( node =>
+        <GridListTile key={node.id} cols={1}>
+            <img src={node.thumbnail.url} alt={node.title} />
+          </GridListTile>
+        )}
+      </GridList>
     </ContentsContiner>
   );
 }
