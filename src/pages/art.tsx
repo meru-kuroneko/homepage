@@ -1,4 +1,5 @@
-import React, { FC }  from 'react';
+import React from 'react';
+import { useStaticQuery, graphql } from "gatsby";
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import GridList from '@material-ui/core/GridList';
@@ -35,8 +36,28 @@ type Props = {
   data: MicrocmsArt
 }
 
-const Art: FC<Props>  = ({data}) => {
+const Art = () => {
   const classes = useStyles();
+  const data = useStaticQuery(
+    graphql`
+      query {
+        allMicrocmsArt {
+          nodes {
+            id
+            title
+            createdAt
+            picture {
+              url
+            }
+            thumbnail {
+              url
+            }
+          }
+        }
+      }
+    ` 
+  )
+
   return (
     <ContentsContiner id='art'>
       <Typography variant="h3" gutterBottom>
