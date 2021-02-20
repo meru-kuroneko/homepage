@@ -5,16 +5,17 @@ import Grid from '@material-ui/core/Grid';
 import ContentsContiner from "../components/contentContiner";
 
 const useStyles = makeStyles((theme) => ({
-  // 使用していない設定はしたい
-  icon: {
-    width: theme.spacing(25),
-    height: theme.spacing(25),
+  dl: {
+    '& dt': {
+      fontWeight: theme.typography.fontWeightBold,
+    },
   },
+  infoMessage: {
+    '& a': {
+      color: theme.palette.primary.main,
+    }
+  }
 }));
-
-function items(title, content) {
-
-}
 
 type Props = {
   id: string,
@@ -25,34 +26,38 @@ const Skill: React.FC<Props> = ({id}) => {
   return (
     <ContentsContiner id={id}>
       <Typography variant="h3" gutterBottom>
-        engineer skills.
+        engineer skill.
       </Typography>
-      <Grid
-        item
+      <Grid 
         direction="column"
         justify="flex-start"
-        alignItems="flex-start" >
+        alignItems="center"
+      >
         <Grid item>
-          <Typography variant="subtitle1" color="textPrimary">
-            開発
-          </Typography>
-          <Typography variant="body1">
-            webアプリケーション, Androidネイティブアプリ（Kotlin）
-          </Typography>
+          <dl className={classes.dl}>
+            <dt>開発経験</dt>
+            <dd>webアプリケーション</dd>
+            <dd>Androidネイティブアプリ（Kotlin）</dd>
+            <dt>言語</dt>
+            <dd>
+              <dt>バックエンド</dt>
+              <dd>Java, Ruby, Kotlin</dd>
+            </dd>
+            <dd>
+              <dt>フロントエンド</dt>
+              <dd>JavaScript, React, TypeScript</dd>
+            </dd>
+          </dl>
         </Grid>
         <Grid item>
-          <Typography variant="subtitle1" color="textPrimary">
-            言語
+          <Typography variant='body1' className={classes.infoMessage}>
+            このサイトはリポジトリを公開しています。<br/>
+            どんなスキルセットで実装されてるか気になる方は覗いてみてください。<br/>
+            <a href='https://github.com/meru-kuroneko/homepage'>
+              https://github.com/meru-kuroneko/homepage
+            </a><br/>
+            個人/小規模のwebサイト制作のお仕事も随時募集しているのでご相談ください。
           </Typography>
-          <Typography variant="body1">
-            バックエンド：Java, Ruby, Kotlin
-          </Typography>
-          <Typography variant="body1">
-            フロントエンド：JavaScript, TypeScript, React
-          </Typography>
-        </Grid>
-        <Grid item>
-          その他：Docker
         </Grid>
       </Grid>
     </ContentsContiner>
