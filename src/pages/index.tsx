@@ -5,14 +5,42 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Fab from '@material-ui/core/Fab';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Zoom from '@material-ui/core/Zoom';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Header from '../components/header';
-import Footer from '../components/footer';
 import Top from './top'
 import About from './about';
 import Art from './art';
 import Skill from './skill';
 
 const useStyles = makeStyles((theme) => ({
+  loadingScreen:{
+    position: "fixed",
+    top: 0,
+    left: 0,
+    zIndex: theme.zIndex.drawer + 1,
+    height: '100%',
+    width: '100%',
+    backgroundColor: theme.palette.primary.light,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    color: '#fff',
+    animation: '$fadeOut 1 3s linear',
+    animationFillMode: 'forwards',
+  },
+  '@keyframes fadeOut': {
+    '0%': {
+      opacity: 1
+    },
+    '80%': {
+      opacity: 1
+    },
+    '100%': {
+      opacity: 0,
+      display: 'none'
+    }
+  },
   fab: {
     position: 'fixed',
     bottom: theme.spacing(3),
@@ -47,19 +75,24 @@ function ScrollTop(props) {
 
 const App = () => {
   const classes = useStyles();
+
   return (
       <>
+        <div id='loadingScreen' className={classes.loadingScreen}>
+          <CircularProgress color="inherit" /><br/>
+          Now Loading...
+        </div>
         <Header/>
         <Top id="top" />
         <About id="about"/>
-        <Art id="art" />
+        <Art />
         <Skill id ="skill" />
-        <Footer/>
         <ScrollTop classes={classes} >
-          <Fab color="secondary" size="large" aria-label="scroll back to top">
+          <Fab color="primary" size="large" aria-label="scroll back to top">
             <KeyboardArrowUpIcon />
           </Fab>
         </ScrollTop>
       </>
   )}
-  export default App;
+
+export default App;

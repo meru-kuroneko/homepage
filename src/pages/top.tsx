@@ -29,8 +29,11 @@ type Props = {
 }
 
 const Top: React.FC<Props> = ({id}) => {
-  const height = window.innerHeight;
-  const classes = useStyles(height);
+  var windowHeight = 100
+  if ( typeof window !== 'undefined' ) {
+    windowHeight = window.innerHeight;
+  }
+  const classes = useStyles(windowHeight);
   return (
     // @ts-ignore
     <Container fullwidth className={classes.container} id={id}>

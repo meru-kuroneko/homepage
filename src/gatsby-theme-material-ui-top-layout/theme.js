@@ -10,15 +10,25 @@ const theme = createMuiTheme({
         'Meiryo',
         'sans-serif'
       ].join(','),
+    body1: {
+      fontSize: '0.9em',
+    }
   },
   palette: {
     primary: {
       main: "#92A4B0"
     },
     secondary: {
-      main: "#B0D0DC"
+      main: "#E9B6A9"
     },
-  }
+  },
+  overrides: {
+    MuiGridListTile: {
+      tile: {
+        borderRadius: '10px',
+      }
+    }
+  },
   });
 
 export default theme;
