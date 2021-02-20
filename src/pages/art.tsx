@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { useStaticQuery, graphql } from "gatsby";
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import ContentsContiner from "../components/contentContiner";
+import Backdrop from '@material-ui/core/Backdrop';
+import {useWindowDimensions} from '../util/windowDimensions'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,12 +14,45 @@ const useStyles = makeStyles((theme) => ({
   },
   gridList: {
     width: '90%',
-    height: 350,
+    height: height => parseInt(height, 10) * 0.6,
   },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
+  '& .MuiGridListTile-tile': {
+    borderRadius: '10px',
+  },
+  thumbnail: {
+    filter: 'blur(1px) saturate(30%)',
+  },
+  layoutWidth: {
+    height: 'auto',
+    width: '70%',
+    animation: '$fadeIn 1 2s linear'
+  },
+  layoutHeight: {
+    height: '80%',
+    width: 'auto',
+    animation: '$fadeIn 1 1s linear'
+  },
+  '@keyframes fadeIn': {
+    from: {
+      opacity: 0
+    },
+    to: {
+      opacity: 1
+    }
+  }
 }));
 
+type Picture = {
+  url: string,
+  height: string,
+  width: string,
+}
+
 const Art = () => {
-  const classes = useStyles();
   const data = useStaticQuery(
     graphql`
       query {
@@ -28,6 +63,8 @@ const Art = () => {
             createdAt
             picture {
               url
+              height
+              width
             }
             thumbnail {
               url
@@ -37,19 +74,48 @@ const Art = () => {
       }
     ` 
   )
+  const [open, setOpen] = useState(false);
+  const [openImageUrl, setOpenImageUrl] = useState('');
+  const [imageClass, setImageClass] = useState('layoutWidth')
+  const handleClose = () => {
+    setOpen(false);
+    setOpenImageUrl('');
+    setImageClass('')
+  };
+  const handleToggle = (imgUrl: Picture) => {
+    setOpenImageUrl(imgUrl.url);
+    setOpen(!open);
+  };
+  const { width, height } = useWindowDimensions();
+  const classes = useStyles(height);
+  const col = width > 500 ? 4 : 2
+
+  useEffect(() => {
+    if (openImageUrl.width > openImageUrl.height) {
+      setImageClass(classes.layoutWidth)
+    }
+    setImageClass(classes.layoutHeight)
+  }, [openImageUrl]);
 
   return (
     <ContentsContiner id='art'>
       <Typography variant="h3" gutterBottom>
         art work.
       </Typography>
-      <GridList cellHeight={160} className={classes.gridList} cols={3}>
+      <GridList cellHeight={160} className={classes.gridList} cols={col}>
         {data.allMicrocmsArt.nodes.map( node =>
         <GridListTile key={node.id} cols={1}>
-            <img src={node.thumbnail.url} alt={node.title} />
+            <img 
+              src={node.thumbnail.url} 
+              alt={node.title} 
+              className={classes.thumbnail}
+              onClick={() => handleToggle(node.picture)} />
           </GridListTile>
         )}
       </GridList>
+      <Backdrop className={classes.backdrop} open={open} onClick={handleClose}>
+        <img src={openImageUrl} alt='art work' className={imageClass} />
+      </Backdrop>
     </ContentsContiner>
   );
 }
