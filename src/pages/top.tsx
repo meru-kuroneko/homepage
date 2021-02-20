@@ -36,17 +36,19 @@ const Top: React.FC<Props> = ({id}) => {
   const classes = useStyles(windowHeight);
   return (
     // @ts-ignore
-    <Container fullwidth className={classes.container} id={id}>
+    <Container className={classes.container} id={id}>
       <Grid
-        className={classes.grid}
         container
         direction="row"
         justify="center"
         alignItems="center"
+        className={classes.grid}
       >
-        <Typography variant="h2" className={classes.title}>
-          Anfang
-        </Typography>
+        <Grid item>
+          <Typography variant="h2" className={classes.title}>
+            Anfang
+          </Typography>
+        </Grid>
       </Grid>
     </Container>
   );

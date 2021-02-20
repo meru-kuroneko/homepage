@@ -29,6 +29,7 @@ const Skill: React.FC<Props> = ({id}) => {
         engineer skill.
       </Typography>
       <Grid 
+        container
         direction="column"
         justify="flex-start"
         alignItems="center"
@@ -40,23 +41,25 @@ const Skill: React.FC<Props> = ({id}) => {
             <dd>Androidネイティブアプリ（Kotlin）</dd>
             <dt>言語</dt>
             <dd>
-              <dt>バックエンド</dt>
-              <dd>Java, Ruby, Kotlin</dd>
+              <dl>
+                <dt>バックエンド</dt>
+                <dd>Java, Ruby, Kotlin</dd>
+              </dl>
             </dd>
             <dd>
-              <dt>フロントエンド</dt>
-              <dd>JavaScript, React, TypeScript</dd>
+              <dl>
+                <dt>フロントエンド</dt>
+                <dd>JavaScript, React, TypeScript</dd>
+              </dl>
             </dd>
           </dl>
-        </Grid>
-        <Grid item>
           <Typography variant='body1' className={classes.infoMessage}>
             このサイトはリポジトリを公開しています。<br/>
             どんなスキルセットで実装されてるか気になる方は覗いてみてください。<br/>
             <a href='https://github.com/meru-kuroneko/homepage'>
               https://github.com/meru-kuroneko/homepage
             </a><br/>
-            個人/小規模のwebサイト制作のお仕事も随時募集しているのでご相談ください。
+            個人/スタートアップのwebサイト制作のお仕事も随時募集しているのでご相談ください。
           </Typography>
         </Grid>
       </Grid>
