@@ -18,7 +18,14 @@ const theme = createMuiTheme({
     secondary: {
       main: "#B0D0DC"
     },
-  }
+  },
+  overrides: {
+    MuiGridListTile: {
+      tile: {
+        borderRadius: '10px',
+      }
+    }
+  },
   });
 
 export default theme;

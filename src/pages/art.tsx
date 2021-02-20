@@ -20,9 +20,6 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer + 1,
     color: '#fff',
   },
-  '& .MuiGridListTile-tile': {
-    borderRadius: '10px',
-  },
   thumbnail: {
     filter: 'blur(1px) saturate(30%)',
   },
