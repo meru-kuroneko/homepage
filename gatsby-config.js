@@ -20,5 +20,11 @@ module.exports = {
           endpoint: 'art',
         }],
       },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "G-7FSQ7FWD9P"
+      },
     },],
 }
