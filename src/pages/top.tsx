@@ -35,7 +35,6 @@ const Top: React.FC<Props> = ({id}) => {
   }
   const classes = useStyles(windowHeight);
   return (
-    // @ts-ignore
     <Container className={classes.container} id={id}>
       <Grid
         container

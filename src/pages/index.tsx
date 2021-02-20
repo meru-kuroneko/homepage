@@ -6,6 +6,7 @@ import Fab from '@material-ui/core/Fab';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Zoom from '@material-ui/core/Zoom';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import MetaData from '../components/metaData'
 import Header from '../components/header';
 import Top from './top'
 import About from './about';
@@ -81,6 +82,7 @@ const App = () => {
 
   return (
       <>
+        <MetaData/>
         <div id='loadingScreen' className={classes.loadingScreen}>
           <CircularProgress color="inherit" /><br/>
           Now Loading...
