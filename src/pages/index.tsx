@@ -36,9 +36,12 @@ const useStyles = makeStyles((theme) => ({
     '80%': {
       opacity: 1
     },
+    '99.9%': {
+      height: '100%'
+    },
     '100%': {
       opacity: 0,
-      display: 'none'
+      height: '0%',
     }
   },
   fab: {
