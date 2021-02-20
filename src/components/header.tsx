@@ -73,7 +73,6 @@ const Header = () => {
                 <MenuItem onClick={e => handleClose('about')}>about me</MenuItem>
                 <MenuItem onClick={e => handleClose('art')}>art work</MenuItem>
                 <MenuItem onClick={e => handleClose('skill')}>engineer skill</MenuItem>
-                <MenuItem onClick={e => handleClose('contact')}>contact</MenuItem>
               </Menu>
           </Toolbar>
         </AppBar>
