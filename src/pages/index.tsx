@@ -56,7 +56,7 @@ const App = ({data}) => {
         <Skill id ="skill" />
         <Footer/>
         <ScrollTop classes={classes} >
-          <Fab color="secondary" size="large" aria-label="scroll back to top">
+          <Fab color="primary" size="large" aria-label="scroll back to top">
             <KeyboardArrowUpIcon />
           </Fab>
         </ScrollTop>
