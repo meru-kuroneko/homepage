@@ -25,6 +25,11 @@ const useStyles = makeStyles((theme) => ({
   },
   layoutWidth: {
     height: 'auto',
+    width: '70%',
+    animation: '$fadeIn 1 2s linear'
+  },
+  spLayoutWidth: {
+    height: 'auto',
     width: '90%',
     animation: '$fadeIn 1 2s linear'
   },
@@ -89,6 +94,10 @@ const Art = () => {
 
   useEffect(() => {
     if (openImageUrl.width > openImageUrl.height) {
+      if(width < 500) {
+        setImageClass(classes.spLayoutWidth)
+        return 
+      }
       setImageClass(classes.layoutWidth)
       return
     }
