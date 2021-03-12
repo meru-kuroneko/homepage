@@ -25,11 +25,11 @@ const useStyles = makeStyles((theme) => ({
   },
   layoutWidth: {
     height: 'auto',
-    width: '70%',
+    width: '90%',
     animation: '$fadeIn 1 2s linear'
   },
   layoutHeight: {
-    height: '80%',
+    height: '75%',
     width: 'auto',
     animation: '$fadeIn 1 1s linear'
   },
@@ -80,7 +80,7 @@ const Art = () => {
     setImageClass('')
   };
   const handleToggle = (imgUrl: Picture) => {
-    setOpenImageUrl(imgUrl.url);
+    setOpenImageUrl(imgUrl);
     setOpen(!open);
   };
   const { width, height } = useWindowDimensions();
@@ -90,6 +90,7 @@ const Art = () => {
   useEffect(() => {
     if (openImageUrl.width > openImageUrl.height) {
       setImageClass(classes.layoutWidth)
+      return
     }
     setImageClass(classes.layoutHeight)
   }, [openImageUrl]);
@@ -111,7 +112,7 @@ const Art = () => {
         )}
       </GridList>
       <Backdrop className={classes.backdrop} open={open} onClick={handleClose}>
-        <img src={openImageUrl} alt='art work' className={imageClass} />
+        <img src={openImageUrl.url} alt='art work' className={imageClass} />
       </Backdrop>
     </ContentsContiner>
   );
