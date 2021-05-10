@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import { useStaticQuery, graphql } from "gatsby";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import ContentsContiner from "../components/contentContiner";
 import Backdrop from '@material-ui/core/Backdrop';
 import {useWindowDimensions} from '../util/windowDimensions'
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,19 +25,22 @@ const useStyles = makeStyles((theme) => ({
     filter: 'blur(1px) saturate(30%)',
   },
   layoutWidth: {
-    height: 'auto',
-    width: '70%',
-    animation: '$fadeIn 1 2s linear'
-  },
-  spLayoutWidth: {
-    height: 'auto',
-    width: '90%',
-    animation: '$fadeIn 1 2s linear'
+    padding: theme.spacing(1),
+    [theme.breakpoints.down('sm')]: {
+      height: 'auto',
+      width: '90%',
+      animation: '$fadeIn 1 2s linear'
+    },
+    [theme.breakpoints.up('md')]: {
+      height: 'auto',
+      width: '70%',
+      animation: '$fadeIn 1 2s linear'
+    },
   },
   layoutHeight: {
     height: '75%',
     width: 'auto',
-    animation: '$fadeIn 1 1s linear'
+    animation: '$fadeIn 1 2s linear'
   },
   '@keyframes fadeIn': {
     from: {
@@ -76,6 +80,12 @@ const Art = () => {
       }
     ` 
   )
+  // ギャラリーのcolumn数を判定するためのもの
+  const theme = useTheme();
+  const sizeSm = useMediaQuery(theme.breakpoints.up('sm'));
+  const col = sizeSm ? 4 : 2
+
+  // イラストのopen, close管理
   const [open, setOpen] = useState(false);
   const [openImageUrl, setOpenImageUrl] = useState('');
   const [imageClass, setImageClass] = useState('layoutWidth')
@@ -88,20 +98,16 @@ const Art = () => {
     setOpenImageUrl(imgUrl);
     setOpen(!open);
   };
+
+  // openするイラストの縦長/横長判定を行ってstyleを切り替える処理
   const { width, height } = useWindowDimensions();
   const classes = useStyles(height);
-  const col = width > 500 ? 4 : 2
-
   useEffect(() => {
     if (openImageUrl.width > openImageUrl.height) {
-      if(width < 500) {
-        setImageClass(classes.spLayoutWidth)
-        return 
-      }
       setImageClass(classes.layoutWidth)
-      return
+    } else {
+      setImageClass(classes.layoutHeight)
     }
-    setImageClass(classes.layoutHeight)
   }, [openImageUrl]);
 
   return (
