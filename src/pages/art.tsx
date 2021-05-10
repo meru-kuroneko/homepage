@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
     filter: 'blur(1px) saturate(30%)',
   },
   layoutWidth: {
-    padding: theme.spacing(1),
     [theme.breakpoints.down('sm')]: {
       height: 'auto',
       width: '90%',
