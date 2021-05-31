@@ -11,7 +11,12 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     margin: 'auto',
     maxWidth: 700,
-    height: windowHeight => windowHeight,
+    [theme.breakpoints.down('sm')]: {
+      height: windowHeight => windowHeight * 1.3,
+    },
+    [theme.breakpoints.up('md')]: {
+      height: windowHeight => windowHeight,
+    },
   },
   grid: {
     height: '100%',

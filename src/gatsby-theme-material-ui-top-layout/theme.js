@@ -10,6 +10,9 @@ const theme = createMuiTheme({
         'Meiryo',
         'sans-serif'
       ].join(','),
+    h3: {
+      fontSize: '3em',
+      },
     body1: {
       fontSize: '0.9em',
     }

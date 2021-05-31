@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     width: theme.spacing(25),
     height: theme.spacing(25),
+    margin: '0 auto',
   },
   container: {
     padding: theme.spacing(2),
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   dl: {
     '& dt': {
       fontWeight: theme.typography.fontWeightBold,
+      marginTop: '0.8em',
     },
   },
   snsIcon: {
@@ -60,61 +62,83 @@ const About: React.FC<Props> = ({ id }) => {
 
   return (
     <ContentsContiner id={id}>
-      <Typography variant="h3" gutterBottom>
-        about me.
-      </Typography>
+        <Typography variant="h3" gutterBottom>
+          about me.
+        </Typography>
       <Grid
         container
         direction="row"
         justify="flex-start"
         alignItems="center"
-        spacing={5} >
-        <Grid item>
+        spacing={3} >
+        <Grid item  xs={12} sm={6}>
           <Avatar src='/icon.jpeg' alt='icon' className={classes.icon} />
-          <Grid item>
-            <Grid
-              container
-              direction="row"
-              justify="space-evenly"
-              alignItems="center"
-              className={classes.snsIcon}>
-              <Grid item>
-                <a href='https://twitter.com/meru_lotte' target='_blank' rel="noopener">
-                  <Twitter />
-                </a>
-              </Grid>
-              <Grid item>
-                <a href='https://www.instagram.com/meru_lotte/' target='_blank' rel="noopener">
-                  <Instagram />
-                </a>
-              </Grid>
-              <Grid item>
-                <a href='https://github.com/meru-kuroneko' target='_blank' rel="noopener">
-                  <GitHub />
-                </a>
-              </Grid>
-              <Grid item>
-                <a href='https://www.pixiv.net/users/50430472'
-                  className={classes.pixivIconLink}
-                  target='_blank' rel="noopener">
-                  <div>
-                    <Typography className={classes.pixivIcon}>P</Typography>
-                  </div>
-                </a>
-              </Grid>
+          <Grid
+            container
+            direction="row"
+            justify="space-evenly"
+            alignItems="center"
+            className={classes.snsIcon}>
+            <Grid item>
+              <a href='https://twitter.com/meru_lotte' target='_blank' rel="noopener">
+                <Twitter />
+              </a>
+            </Grid>
+            <Grid item>
+              <a href='https://www.instagram.com/meru_lotte/' target='_blank' rel="noopener">
+                <Instagram />
+              </a>
+            </Grid>
+            <Grid item>
+              <a href='https://github.com/meru-kuroneko' target='_blank' rel="noopener">
+                <GitHub />
+              </a>
+            </Grid>
+            <Grid item>
+              <a href='https://www.pixiv.net/users/50430472'
+                className={classes.pixivIconLink}
+                target='_blank' rel="noopener">
+                <div>
+                  <Typography className={classes.pixivIcon}>P</Typography>
+                </div>
+              </a>
             </Grid>
           </Grid>
         </Grid>
-        <Grid item>
+        <Grid item xs={12} sm={6}>
           <dl className={classes.dl}>
             <dt>なまえ</dt>
             <dd>めるろって</dd>
             <dt>しごと</dt>
-            <dd>イラスト制作</dd>
-            <dd>システムエンジニア</dd>
-            <dt>しゅみ</dt>
-            <dd>ボードゲーム 謎解き フットサル テニス</dd>
-            <dd>最近は万年筆とそのインクに課金しがち</dd>
+            <dd>イラストレーター</dd>
+            <dt>お仕事の依頼について</dt>
+            <dd>
+              TwitterDMまたはコミッションサイトからご依頼ください。<br/>
+              <b>
+                <a href="https://skima.jp/profile?id=195456" target="_blank" rel="noreferrer">
+                SUKIMA
+                </a>
+              </b><br />
+              <b>
+                <a href="https://coconala.com/users/2413277" target="_blank" rel="noreferrer">
+                coconala
+                </a>
+              </b>
+            </dd>
+            <dt>グッズ販売</dt>
+            <dd>
+              現在2箇所でグッズ販売しています。<br/>
+              <b>
+                <a href="https://einemeru.booth.pm/" target="_blank" rel="noreferrer">
+                  BOOTH
+                </a>
+              </b><br/>    
+              <b>
+                <a href="https://suzuri.jp/meru_lotte" target="_blank" rel="noreferrer">
+                SUZURI
+                </a>
+              </b>
+            </dd>
           </dl>
         </Grid>
       </Grid>
