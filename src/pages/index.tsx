@@ -89,9 +89,9 @@ const App = () => {
         </div>
         <Header/>
         <Top id="top" />
-        <About id="about"/>
         <Art />
         <Skill id ="skill" />
+        <About id="about"/>
         <ScrollTop classes={classes} >
           <Fab color="primary" size="large" aria-label="scroll back to top">
             <KeyboardArrowUpIcon />

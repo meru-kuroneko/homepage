@@ -8,16 +8,8 @@ import "@fontsource/amatic-sc"
 // @ts-ignore
 const useStyles = makeStyles(() => ({
   container: {
-    margin: '-60px 0px',
     padding: '0px',
-    height: height => height,
-    backgroundImage: 'url(topimage.png)',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
     opacity: '50%',
-  },
-  grid: {
-    height: '100%',
   },
   title: {
     fontFamily: ["Amatic SC", "Caveat"],
@@ -29,23 +21,24 @@ type Props = {
 }
 
 const Top: React.FC<Props> = ({id}) => {
-  var windowHeight = 100
-  if ( typeof window !== 'undefined' ) {
-    windowHeight = window.innerHeight;
-  }
-  const classes = useStyles(windowHeight);
+  const classes = useStyles();
   return (
     <Container className={classes.container} id={id}>
       <Grid
         container
-        direction="row"
+        direction="column"
         justify="center"
         alignItems="center"
-        className={classes.grid}
       >
         <Grid item>
           <Typography variant="h2" className={classes.title}>
             Anfang
+          </Typography>
+        </Grid>
+        <Grid item>
+          <Typography variant="body1">
+            イラストレーター めるろって のポートフォリをサイト<br/>
+            ごゆっくりどうぞ
           </Typography>
         </Grid>
       </Grid>
